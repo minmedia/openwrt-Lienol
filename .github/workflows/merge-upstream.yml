@@ -15,7 +15,7 @@ on:
     - cron: 30 19 * * *
   push:
     branches: 
-      - dev-19.07
+      - dev
   release:
      types: [published]
 
@@ -29,7 +29,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       with:
-        ref: master
+        ref: dev-master
         fetch-depth: 0
         lfs: true
         
@@ -39,49 +39,39 @@ jobs:
         git config --global user.name "LesLis.W"
     
     - name: Load upstream dev-master commits
-      run: git pull https://github.com/Lienol/openwrt.git dev-master:dev-master --no-edit --strategy-option ours
+      run: git pull -f https://github.com/Lienol/openwrt.git dev-master:dev-master --no-edit --strategy-option ours
    
     - name: Push Commits
       env:
         DOWNSTREAM_BRANCH: dev-master
-      run: git push origin $DOWNSTREAM_BRANCH
+      run: git push -f origin $DOWNSTREAM_BRANCH
     
     - name: Checkout
       uses: actions/checkout@master
       with:
-        ref: master
+        ref: dev-19.07
         fetch-depth: 0
         lfs: true
-        
-    - name: Set git identity
-      run : |
-        git config --global user.email "manyu34@gmail.com"
-        git config --global user.name "LesLis.W"
-    
+   
     - name: Load upstream 19.07 commits
-      run: git pull https://github.com/Lienol/openwrt.git dev-19.07:dev-19.07 --no-edit --strategy-option ours
+      run: git pull -f https://github.com/Lienol/openwrt.git dev-19.07:dev-19.07 --no-edit --strategy-option ours
    
     - name: Push Commits
       env:
         DOWNSTREAM_BRANCH: dev-19.07
-      run: git push origin $DOWNSTREAM_BRANCH
+      run: git push -f origin $DOWNSTREAM_BRANCH
 
     - name: Checkout
       uses: actions/checkout@master
       with:
-        ref: master
+        ref: dev-lean-lede
         fetch-depth: 0
         lfs: true
-        
-    - name: Set git identity
-      run : |
-        git config --global user.email "manyu34@gmail.com"
-        git config --global user.name "LesLis.W"
     
     - name: Load upstream dev-lean-lede commits
-      run: git pull https://github.com/Lienol/openwrt.git dev-lean-lede:dev-lean-lede --no-edit --strategy-option ours
+      run: git pull -f https://github.com/Lienol/openwrt.git dev-lean-lede:dev-lean-lede --no-edit --strategy-option ours
    
     - name: Push Commits
       env:
         DOWNSTREAM_BRANCH: dev-lean-lede
-      run: git push origin $DOWNSTREAM_BRANCH
+      run: git push -f origin $DOWNSTREAM_BRANCH
