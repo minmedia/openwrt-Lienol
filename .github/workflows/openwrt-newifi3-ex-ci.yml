@@ -1007,6 +1007,7 @@ jobs:
           CONFIG_PACKAGE_luci-i18n-zerotier-zh-cn=y
 
 
+          CONFIG_luci-ssl-openssl=y
           CONFIG_POSTFIX_TLS=y
           CONFIG_POSTFIX_SASL=y
           CONFIG_POSTFIX_LDAP=y
