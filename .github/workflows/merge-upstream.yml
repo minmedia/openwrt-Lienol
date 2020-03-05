@@ -15,7 +15,7 @@ on:
     - cron: 30 19 * * *
   push:
     branches: 
-      - dev
+      - master-build
   release:
      types: [published]
 
