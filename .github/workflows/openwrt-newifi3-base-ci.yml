@@ -14,7 +14,7 @@ on:
   #  - cron: 0 20 * * *
    push:
      branches: 
-       - dev
+       - master-build
 
 jobs:
   build:
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
         with:
-          ref: dev-19.07
+          ref: dev-master
 
       - name: Initialization environment
         env:
